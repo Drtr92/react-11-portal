@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import {Main} from "../../styles/Styles.tsx";
+import styled from "styled-components";
+import { Main } from "../../styles/Styles.tsx";
 import { type ChangeEvent, type SubmitEvent, useState } from "react";
 
 type Todo = {
@@ -17,8 +17,65 @@ const TodoContainer = styled.div`
     ${Main};
 `;
 
-function TodoPage() {
+const Title = styled.h1`
+    font-size: 1.8rem;
+    color: #333333;
+    margin-bottom: 20px;
+    text-align: center;
+`;
 
+const TodoForm = styled.form`
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+`;
+
+const TodoInput = styled.input`
+    flex: 1;
+    padding: 12px 16px;
+    font-size: 1rem;
+    border: 2px solid #e1e1e1;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s;
+    &:focus {
+        border-color: #6366f1;
+    }
+`;
+
+const AddTodoBtn = styled.button`
+    padding: 12px 20px;
+    background-color: #6366f1;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: #4f46e5;
+}
+`;
+
+const TodoDivider = styled.hr`
+    border: none;
+    height: 1px;
+    background-color: #eaeaea;
+    margin: 20px 0;
+`;
+
+const TodoUl = styled.ul`
+    list-style: none;
+`;
+
+
+
+
+
+
+
+function TodoPage() {
     const [todoList, setTodoList] = useState<Todo[]>([]);
     const [todoValue, setTodoValue] = useState<string>("");
 
@@ -58,18 +115,18 @@ function TodoPage() {
 
     return (
         <TodoContainer>
-            <h1>My To_Do ({todoList.length})</h1>
-            <form onSubmit={handleSubmit}>
-                <input
+            <Title>My To_Do ({todoList.length})</Title>
+            <TodoForm onSubmit={handleSubmit}>
+                <TodoInput
                     type={"text"}
                     placeholder={"Write your to do ..."}
                     onChange={handleOnChange}
                     value={todoValue}
                 />
-                <button type="submit">Add To Do</button>
-            </form>
-            <hr />
-            <ul>
+                <AddTodoBtn type="submit">Add To Do</AddTodoBtn>
+            </TodoForm>
+            <TodoDivider />
+            <TodoUl>
                 {todoList.map((item, index) => (
                     <li key={index}>
                         <span>{item.text}</span>
@@ -89,7 +146,7 @@ function TodoPage() {
                         </button>
                     </li>
                 ))}
-            </ul>
+            </TodoUl>
         </TodoContainer>
     );
 }

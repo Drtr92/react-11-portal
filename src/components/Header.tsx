@@ -12,6 +12,7 @@ const HeadTop = styled.header`
 
 const Nav = styled.nav`
     display: flex;
+    gap: 30px;
 `;
 
 const LogoBox = styled.div`
@@ -26,7 +27,7 @@ function Header() {
             <LogoBox>로고</LogoBox>
             <Nav>
                 <Link to={"/"}>Home</Link>
-                <Link to={"todo"}>Todo</Link>
+                <Link to={"todo"}>To_do</Link>
             </Nav>
             <ToggleButton>버튼</ToggleButton>
         </HeadTop>
