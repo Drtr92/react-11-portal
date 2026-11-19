@@ -1,17 +1,11 @@
 import { type ChangeEvent, type SubmitEvent, useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
+import { GlobalInput } from "../../../styles/Styles.tsx";
 
 const Form = styled.form`
     display: flex;
     gap: 10px;
-`;
-
-const Input = styled.input`
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    outline: none;
 `;
 
 const Button = styled.button`
@@ -44,7 +38,7 @@ function SearchBar( { keyword }:{ keyword : string } ) {
 
     return (
         <Form onSubmit={handleSubmit}>
-            <Input
+            <GlobalInput
                 onChange={handleChange}
                 value={input}
                 placeholder={"Search movies..."}

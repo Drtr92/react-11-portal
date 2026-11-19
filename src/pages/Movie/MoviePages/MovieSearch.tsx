@@ -8,11 +8,11 @@ import MovieCard from "../MovieComponent/MovieCard.tsx";
 
 const List = styled.ul`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    max-width: 1220px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); // repeat(횟수, 크기) Fraction = 비율
+    max-width: 1220px;  // auto-fit: 횟수를 숫자로 고정하지 않고, 부모 너비가 허용하는 한 최대한 꽉 채워서 반복
     width: 100%;
     gap: 20px;
-    margin: 0 auto 0;
+    margin: 0 auto;
     padding: 0 20px;
     box-sizing: border-box;
     justify-items: center;
