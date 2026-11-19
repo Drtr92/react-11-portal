@@ -6,6 +6,8 @@ import CoinPage from "../pages/Coin/CoinPage.tsx";
 import MovieHome from "../pages/Movie/MoviePages/MovieHome.tsx";
 import MovieSearch from "../pages/Movie/MoviePages/MovieSearch.tsx";
 import MovieDetail from "../pages/Movie/MoviePages/MovieDetail.tsx";
+import ProductList from "../pages/Product/ProductList.tsx";
+import ProductDetail from "../pages/Product/ProductDetail.tsx";
 
 function AppRouter() {
     const routes: RouteObject[] = [
@@ -19,12 +21,18 @@ function AppRouter() {
                 {
                     path: "movie",
                     children: [
-                        { index: true, element: <MovieHome /> }, // /movie
-                        { path: "MovieSearch", element: <MovieSearch /> }, // /movie/MovieSearch
-                        { path: "MovieDetail/:id", element: <MovieDetail /> }, // /movie/MovieDetail/:id
+                        { index: true, element: <MovieHome /> },
+                        { path: "MovieSearch", element: <MovieSearch /> },
+                        { path: "MovieDetail/:id", element: <MovieDetail /> }
                     ],
                 },
-                // { path: "rocket", element: <ProductPage /> },
+                {
+                    path: "Product",
+                    children: [
+                        { index: true, element: <ProductList /> },
+                        { path: "ProductDetail", element: <ProductDetail /> }
+                  ]
+                },
                 // { path: "book", element: <BookPage /> }
             ],
         },
