@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router";
-import { MovieContainer } from "./MovieHome.tsx";
+import { useSearchParams } from "react-router";
+import { MovieContainer, MovieDiv } from "./MovieHome.tsx";
 import SearchBar from "../MovieComponent/SearchBar.tsx";
-import { BackBtn } from "./MovieDetail.tsx";
 import MovieCard from "../MovieComponent/MovieCard.tsx";
 
 
@@ -29,7 +28,6 @@ export type MovieList = {
 function MovieSearch() {
     const [searchParams] = useSearchParams();
     const keyword = searchParams.get("keyword");
-    const navigate = useNavigate();
 
     const [list, setList] = useState<MovieList[]>([]);
     const [loading, setLoading] = useState(true);
@@ -60,22 +58,12 @@ function MovieSearch() {
 
     return (
         <MovieContainer>
-            <div>
-                <BackBtn
-                    onClick={() => {
-                        navigate("/movie");
-                    }}>
-                    {" "}
-                    &larr; 홈으로
-                </BackBtn>
-                <div>
+            <MovieDiv>
                     <h1>검색 키워드 : {keyword}</h1>
                     <SearchBar keyword={keyword || ""} />
                     {loading && <p>Loading...</p>}
                     {error && <p>{error}</p>}
-                </div>
-                <div></div>
-            </div>
+            </MovieDiv>
             <List>
                 {list.length > 0
                     ? list.map((item, index) => <MovieCard key={index} movie={item} />)

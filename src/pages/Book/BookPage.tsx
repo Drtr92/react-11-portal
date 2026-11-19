@@ -8,7 +8,16 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    padding: 40px;
+`;
+
+const BooksContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    margin: 80px auto;
+    padding: 30px;
+    gap: 20px;
 `;
 
 const Title = styled.span`
@@ -21,8 +30,10 @@ const Title = styled.span`
 function BookPage() {
     return (
         <Container>
-            <Title>Google Books 검색</Title>
-            <SearchBar keyword="" />
+            <BooksContainer>
+                <Title>Google Books 검색</Title>
+                <SearchBar keyword="" />
+            </BooksContainer>
         </Container>
     );
 }
