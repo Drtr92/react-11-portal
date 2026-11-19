@@ -26,6 +26,7 @@ function Header() {
             <LogoBox>로고</LogoBox>
             <Nav>
                 <Link to={"/"}>Home</Link>
+                <Link to={"todo"}>Todo</Link>
             </Nav>
             <ToggleButton>버튼</ToggleButton>
         </HeadTop>
