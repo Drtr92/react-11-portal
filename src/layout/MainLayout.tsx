@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Outlet } from "react-router";
+import Header from "../components/Header.tsx";
 
 const Wrap = styled.div`
     display: flex;
@@ -10,7 +11,7 @@ const Wrap = styled.div`
 function MainLayout() {
     return (
         <Wrap>
-            <header />
+            <Header />
             <Outlet />
         </Wrap>
     );
