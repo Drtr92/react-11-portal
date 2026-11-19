@@ -31,6 +31,7 @@ function Header() {
                 <Link to={"coin"}>Coin</Link>
                 <Link to={"movie"}>Movie</Link>
                 <Link to={"product"}>Product</Link>
+                <Link to={"book"}>Book</Link>
             </Nav>
             <ToggleButton>버튼</ToggleButton>
         </HeadTop>

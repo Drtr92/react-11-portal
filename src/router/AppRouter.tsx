@@ -8,6 +8,9 @@ import MovieSearch from "../pages/Movie/MoviePages/MovieSearch.tsx";
 import MovieDetail from "../pages/Movie/MoviePages/MovieDetail.tsx";
 import ProductList from "../pages/Product/ProductList.tsx";
 import ProductDetail from "../pages/Product/ProductDetail.tsx";
+import BookPage from "../pages/Book/BookPage.tsx";
+import BookSearch from "../pages/Book/BookSearch.tsx";
+import BookDetail from "../pages/Book/BookDetail.tsx";
 
 function AppRouter() {
     const routes: RouteObject[] = [
@@ -23,17 +26,24 @@ function AppRouter() {
                     children: [
                         { index: true, element: <MovieHome /> },
                         { path: "MovieSearch", element: <MovieSearch /> },
-                        { path: "MovieDetail/:id", element: <MovieDetail /> }
+                        { path: "MovieDetail/:id", element: <MovieDetail /> },
                     ],
                 },
                 {
                     path: "product",
                     children: [
                         { index: true, element: <ProductList /> },
-                        { path: "productDetail/:id", element: <ProductDetail /> }
-                  ]
+                        { path: "productDetail/:id", element: <ProductDetail /> },
+                    ],
                 },
-                // { path: "book", element: <BookPage /> }
+                {
+                    path: "book",
+                    children: [
+                        { index: true, element: <BookPage /> },
+                        { path: "bookSearch", element: <BookSearch /> },
+                        { path: `bookDetail/:id`, element: <BookDetail /> },
+                    ],
+                },
             ],
         },
     ];
