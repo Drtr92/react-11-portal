@@ -1,22 +1,13 @@
 import { type SubmitEvent, type ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
-import { GlobalInput } from "../../../styles/Styles.tsx";
+import { GlobalButton, GlobalInput } from "../../../styles/Styles.tsx";
 
 const Form = styled.form`
     display: flex;
     flex-direction: row;
     width: 100%;
     gap: 10px;
-`;
-
-const Button = styled.button`
-    padding: 12px 18px;
-    border: none;
-    background-color: black;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
 `;
 
 function BookSearchBar({ keyword }: { keyword?: string }) {
@@ -37,7 +28,7 @@ function BookSearchBar({ keyword }: { keyword?: string }) {
     return (
         <Form onSubmit={onSubmitHandler}>
             <GlobalInput onChange={onChangeHandler} value={inputKeyword} />
-            <Button type="submit">검색</Button>
+            <GlobalButton type="submit">검색</GlobalButton>
         </Form>
     );
 }

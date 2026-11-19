@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { GlobalInput, Main } from "../styles/Styles.tsx";
+import { GlobalButton, GlobalInput, Main } from "../styles/Styles.tsx";
 import { type ChangeEvent, type SubmitEvent, useState } from "react";
 
 type Todo = {
@@ -27,21 +27,6 @@ const TodoForm = styled.form`
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
-`;
-
-const AddTodoBtn = styled.button`
-    padding: 12px 20px;
-    background-color: #6366f1;
-    color: white;
-    font-weight: 600;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-
-    &:hover {
-        background-color: #4f46e5;
-    }
 `;
 
 const TodoDivider = styled.hr`
@@ -145,7 +130,7 @@ function TodoPage() {
                         onChange={handleOnChange}
                         value={todoValue}
                     />
-                    <AddTodoBtn type="submit">Add To Do</AddTodoBtn>
+                    <GlobalButton type="submit">Add To Do</GlobalButton>
                 </TodoForm>
                 <TodoDivider />
                 <TodoUl>

@@ -1,20 +1,11 @@
 import { type ChangeEvent, type SubmitEvent, useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
-import { GlobalInput } from "../../../styles/Styles.tsx";
+import { GlobalButton, GlobalInput } from "../../../styles/Styles.tsx";
 
 const Form = styled.form`
     display: flex;
     gap: 10px;
-`;
-
-const Button = styled.button`
-    padding: 12px;
-    background-color: #ff5959;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
 `;
 
 function SearchBar( { keyword }:{ keyword : string } ) {
@@ -45,7 +36,7 @@ function SearchBar( { keyword }:{ keyword : string } ) {
                 autoComplete={"off"}
                 spellCheck={false}
             />
-            <Button type={"submit"}>Search</Button>
+            <GlobalButton type={"submit"}>Search</GlobalButton>
         </Form>
     );
 }

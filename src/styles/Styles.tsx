@@ -16,3 +16,18 @@ export const GlobalInput = styled.input`
         border-color: #6366f1;
     }
 `;
+
+export const GlobalButton = styled.button`
+    padding: 12px 20px;
+    background-color: #6366f1;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: #4f46e5;
+    }
+`;

@@ -24,7 +24,7 @@ const ToggleButton = styled.button``;
 function Header() {
     return (
         <HeadTop>
-            <LogoBox>로고</LogoBox>
+            <LogoBox>임시로고</LogoBox>
             <Nav>
                 <Link to={"/"}>Home</Link>
                 <Link to={"todo"}>To_do</Link>
