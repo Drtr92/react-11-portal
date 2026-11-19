@@ -69,9 +69,47 @@ const TodoUl = styled.ul`
     list-style: none;
 `;
 
+const TodoLi = styled.li`
 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: backgound-color 0.2s;
 
+    &:hover {
+    background-color: #f3f4f6;
+}`;
 
+const TodoText = styled.span<{ $completed: boolean }>`
+    flex: 1;
+    font-size: 1rem;
+    word-break: break-all;
+    margin-right: 10px;
+    color: ${props => (props.$completed ? "#9ca3af" : "#1f2937")};
+    text-decoration: ${props => (props.$completed ? "line-through" : "none")};
+`;
+
+const TodoActionBttn = styled.button`
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 6px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+
+    &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+`;
 
 
 
@@ -128,23 +166,23 @@ function TodoPage() {
             <TodoDivider />
             <TodoUl>
                 {todoList.map((item, index) => (
-                    <li key={index}>
-                        <span>{item.text}</span>
-                        <button
+                    <TodoLi key={index}>
+                        <TodoText $completed={item.completed}>{item.text}</TodoText>
+                        <TodoActionBttn
                             onClick={() => {
                                 // 지금 현재의 completed 값을 반대로 저장
                                 return handleToggleTodo(index);
                             }}>
                             {item.completed ? "❤️" : "🤍"}
-                        </button>
+                        </TodoActionBttn>
 
-                        <button
+                        <TodoActionBttn
                             onClick={() => {
                                 return handleDeleteTodo(index);
                             }}>
                             ❌
-                        </button>
-                    </li>
+                        </TodoActionBttn>
+                    </TodoLi>
                 ))}
             </TodoUl>
         </TodoContainer>
