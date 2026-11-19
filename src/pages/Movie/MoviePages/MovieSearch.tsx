@@ -7,11 +7,15 @@ import MovieCard from "../MovieComponent/MovieCard.tsx";
 
 
 const List = styled.ul`
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    max-width: 1220px;
+    width: 100%;
     gap: 20px;
-    margin-top: 100px;
-    justify-content: center;
+    margin: 0 auto 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+    justify-items: center;
 `;
 
 type ApiResponse = {

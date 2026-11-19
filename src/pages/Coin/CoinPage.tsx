@@ -59,8 +59,10 @@ function CoinPage() {
             .catch((err: unknown ) => {
                 if (err instanceof Error) {
                     console.log(err.message);
+                    setLoading(false);
                 } else {
                     console.log("알 수 없는 에러가 발생했습니다. : " + err);
+                    setLoading(false);
                 }
             })
             }, [coins])

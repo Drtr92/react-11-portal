@@ -3,11 +3,11 @@ import { Link } from "react-router";
 
 const HeadTop = styled.header`
     display: flex;
-    height: calc(100dvh / 11);
-    min-height: 100px;
+    min-height: 50px;
     background-color: tomato;
     justify-content: space-between;
     align-items: center;
+    padding: 20px;
 `;
 
 const Nav = styled.nav`
@@ -28,10 +28,10 @@ function Header() {
             <Nav>
                 <Link to={"/"}>Home</Link>
                 <Link to={"todo"}>To_do</Link>
-                <Link to={"coin"}>Coin</Link>
                 <Link to={"movie"}>Movie</Link>
-                <Link to={"product"}>Product</Link>
                 <Link to={"book"}>Book</Link>
+                <Link to={"coin"}>Coin</Link>
+                <Link to={"product"}>Product</Link>
             </Nav>
             <ToggleButton>버튼</ToggleButton>
         </HeadTop>
