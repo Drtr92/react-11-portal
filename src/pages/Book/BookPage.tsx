@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import SearchBar from "./BookComponent/BookSearchBar.tsx";
-
-/* ================= Styled Components ================= */
+import { GlobalTitle } from "../../styles/Styles.tsx";
 
 const Container = styled.div`
     display: flex;
@@ -17,21 +16,13 @@ const BooksContainer = styled.div`
     width: 400px;
     margin: 80px auto;
     padding: 30px;
-    gap: 20px;
 `;
-
-const Title = styled.span`
-    font-size: 30px;
-    font-weight: 800;
-`;
-
-/* ================= Component ================= */
 
 function BookPage() {
     return (
         <Container>
             <BooksContainer>
-                <Title>Google Books 검색</Title>
+                <GlobalTitle>Google Books 검색</GlobalTitle>
                 <SearchBar keyword="" />
             </BooksContainer>
         </Container>

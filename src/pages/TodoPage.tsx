@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { GlobalButton, GlobalInput, Main } from "../styles/Styles.tsx";
+import { GlobalButton, GlobalInput, GlobalTitle, Main } from "../styles/Styles.tsx";
 import { type ChangeEvent, type SubmitEvent, useState } from "react";
 
 type Todo = {
@@ -14,13 +14,6 @@ const TodoContainer = styled.div`
     background-color: white;
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-`;
-
-const Title = styled.h1`
-    font-size: 1.8rem;
-    color: #333333;
-    margin-bottom: 20px;
-    text-align: center;
 `;
 
 const TodoForm = styled.form`
@@ -122,7 +115,7 @@ function TodoPage() {
     return (
         <Main>
             <TodoContainer>
-                <Title>My To_Do ({todoList.length})</Title>
+                <GlobalTitle>My To_Do ({todoList.length})</GlobalTitle>
                 <TodoForm onSubmit={handleSubmit}>
                     <GlobalInput
                         type={"text"}

@@ -31,3 +31,10 @@ export const GlobalButton = styled.button`
         background-color: #4f46e5;
     }
 `;
+
+export const GlobalTitle = styled.h1`
+    font-size: 1.8rem;
+    color: #333333;
+    margin-bottom: 20px;
+    text-align: center;
+`;
