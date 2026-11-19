@@ -1,123 +1,92 @@
 import { Main } from "../../styles/Styles.tsx";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import GlobalStyles from "../../styles/GlobalStyle.ts";
 
-type Coin = {
-    market: string;
-    korean_name: string;
-    english_name: string;
+export type Coins = {
+    id: string;
+    symbol: string;
+    name: string;
+    nameid: string;
+    rank: number;
+    price_usd: string;
+    percent_change_24h: string;
+    percent_change_1h: string;
+    percent_change_7d: string;
+    price_btc: string;
+    market_cap_usd: string;
+    volume24: number;
+    volume24a: number;
+    csupply: string;
+    tsupply: string;
+    msupply: string;
 };
 
-const Container = styled.div`
-    width: 100%;
-    max-width: 500px;
-    margin: 60px auto;
-    padding: 30px;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.05);
-    h1 {
-        font-size: 1.6rem;
-        color: #1f2937;
-        margin-bottom: 15px;
-        text-align: center;
-    }
+const CoinUl = styled.ul`
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+    gap: 10px;
+`;
 
-    hr {
-        border: none;
-        height: 1px;
-        background-color: #e5e7eb;
-        margin: 20px 0;
-    }
+const CoinLi = styled.li`
+    display: flex;
+    background-color: goldenrod;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+`;
 
-    select {
-        width: 100%;
-        padding: 12px 16px;
-        font-size: 1rem;
-        border: 2px solid #e5e7eb;
-        outline: none;
-        background-color: #f9fafb;
-        color: #1f2937;
-        cursor: pointer;
-        transition:
-            border-color 0.2s,
-            background-color 0.2s;
-    }
+const CoinName = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
 
-    select:hover {
-        background-color: #f3f4f6;
-    }
-
-    select:focus {
-        border-color: #3b82f6;
-        background-color: white;
-    }
+const CoinPrice = styled.div`
+    display: flex;
 `;
 
 function CoinPage() {
-    const [coins, setCoins] = useState<Coin[]>([]);
-
-    // 비동기 함수를 처리한 리턴타입은 "앞으로 일어날 일인데 이러한 타입이 리턴된다는걸 약속할게"
-    // Promise라는 타입을 사용할 수 있음
-    const firstThen = (response: Response): Promise<Coin[]> => {
-        // 통신을 fetch 가 했고, 그에 대한 상세 내역 (정상 통신 됐는지, 어디에서 보내준 정보인지 등등의)
-        // 데이터가 들어있느 객체 타입 Response
-        // 그 안에 들어있는 나머지는 쓰지 않고, 실제 응답 내용 string을 자바스크립트에서 이용할 수 있는
-        // 객체 상태로 변환한 값만 리턴할거야 (then 안에서의 리턴이니까 다음 then 에게 전달)
-        return response.json();
-    };
-
-    const secondThen = (json: Coin[]) => {
-        setCoins(json);
-    };
+    const [coins, setCoins] = useState<Coins[]>([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // fetch 함수는 매개변수를 최대 2개까지 받을 수 있구나
-        // 그리고 이걸 실행하면 뭔진 모르겠지만, "Response" 라는 타입의 내용을 반환 하는구나
-        fetch("https://api.upbit.com/v1/market/all")
-            // fetch는 비동기 함수고, then(함수)과 catch(함수) 를 메소드 체인을 통해 쓸 수 있음
-            // 즉, then과 catch에 들어가는 함수의 매개변수는 이미 "그 전 단계의 리턴값"이 들어온다는게 정해져 있음
-            .then(firstThen)
-            .then(secondThen)
-            // 비동기 함수를 처리할 때의 catch 메서드에 써주는 함수에 들어가는 매개변수는
-            // 어떠한 모양일지 정해지지 않았음. fetch에서 에러날때의 에러 내용과
-            // 첫번째 then에서 에러날 때의 에러 모양과
-            // 두번째 then 에서 에러날 때의 에러 모양이 다 다름   => 그래서 타입스크립트 엔진은 any 타입으로 추론
-            // 안전하게 error를 처리하기 위해서는 any 타입이 아니라 unknown으로 바꿔줌
-            .catch((error: unknown) => {
-                // 내로잉 : 타입을 좁혀서 사용해주는 것
-                // 에러가 어디선가 발생하면 프로그램 죽음(kill, 프로그램이 꺼짐)
-                //  => 그래서 any를 통해 사용하지 않고 안전하게 다음 코드를 진행하기 위해 내로잉을 하는 것
-
-                // 내로잉에서 사용할 수 있는 typeof 연산자는 기능이 부족함  => 원시타입을 구분할 때
-                // instanceof 연산자 (JS, TS) : 객체가 특정 타입인지 아닌지 boolean으로 대답   => 참조자료형 구분
-                // "Error"타입 -> 자바스크립트 엔진이 '오류'에 대해서 분석한 표준 타입
-                if (error instanceof Error) {
-                    console.log(error.message);
+        fetch("https://api.coinlore.net/api/tickers/?start=0&limit=50")
+            .then(res => res.json())
+            .then(({ data }: { data: Coins[] }) => {
+                setCoins(data)
+                setLoading(false);
+            })
+            .catch((err: unknown ) => {
+                if (err instanceof Error) {
+                    console.log(err.message);
                 } else {
-                    console.log("알 수 없는 에러가 발생되었습니다" + error);
+                    console.log("알 수 없는 에러가 발생했습니다. : " + err);
                 }
-            });
-    }, []);
+            })
+            }, [coins])
+
+    if (loading) {
+            return <div> Loading... </div>
+    }
 
     return (
-        <Main>
-            <GlobalStyles />
-            <Container>
-                <h1>업비트 코인 목록 ({coins.length}개)</h1>
-                <hr />
-                <select>
-                    {coins.map((coin, index) => {
-                        return (
-                            <option key={index} value={coin.market}>
-                                {coin.korean_name} ({coin.market})
-                            </option>
-                        );
-                    })}
-                </select>
-            </Container>
-        </Main>
+        <>
+            <Main>
+                <CoinUl>
+                    {coins.map(coin => (
+                        <CoinLi key={coin.id}>
+                            <CoinName>
+                                <div>{coin.name}</div>
+                                <div>{coin.symbol}</div>
+                            </CoinName>
+                            <CoinPrice>
+
+                            </CoinPrice>
+                        </CoinLi>
+                    ))}
+                </CoinUl>
+            </Main>
+        </>
     );
 }
 
