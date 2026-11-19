@@ -28,6 +28,7 @@ function Header() {
             <Nav>
                 <Link to={"/"}>Home</Link>
                 <Link to={"todo"}>To_do</Link>
+                <Link to={"coin"}>Coin</Link>
             </Nav>
             <ToggleButton>버튼</ToggleButton>
         </HeadTop>

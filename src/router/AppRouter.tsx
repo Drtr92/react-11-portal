@@ -1,7 +1,8 @@
 import { createBrowserRouter, type RouteObject } from "react-router";
 import MainLayout from "../layout/MainLayout.tsx";
 import Home from "../pages/Home.tsx";
-import TodoPage from "../pages/Todo/TodoPage.tsx";
+import TodoPage from "../pages/TodoPage.tsx";
+import CoinPage from "../pages/Coin/CoinPage.tsx";
 
 function AppRouter() {
     const routes: RouteObject[] = [
@@ -11,7 +12,7 @@ function AppRouter() {
             children: [
                 { index: true, element: <Home /> },
                 { path: "todo", element: <TodoPage /> },
-                // { path: "coin", element: <CoinPage /> },
+                { path: "coin", element: <CoinPage /> },
                 // { path: "movie", element: <MoviePage /> },
                 // { path: "rocket", element: <ProductPage /> },
                 // { path: "book", element: <BookPage /> }
@@ -19,6 +20,6 @@ function AppRouter() {
         },
     ];
         return createBrowserRouter(routes);
-};
+}
 
 export default AppRouter;

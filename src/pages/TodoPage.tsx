@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Main } from "../../styles/Styles.tsx";
+import { Main } from "../styles/Styles.tsx";
 import { type ChangeEvent, type SubmitEvent, useState } from "react";
 
 type Todo = {
@@ -14,7 +14,6 @@ const TodoContainer = styled.div`
     background-color: white;
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-    ${Main};
 `;
 
 const Title = styled.h1`
@@ -55,7 +54,7 @@ const AddTodoBtn = styled.button`
 
     &:hover {
         background-color: #4f46e5;
-}
+    }
 `;
 
 const TodoDivider = styled.hr`
@@ -70,7 +69,6 @@ const TodoUl = styled.ul`
 `;
 
 const TodoLi = styled.li`
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -81,8 +79,9 @@ const TodoLi = styled.li`
     transition: backgound-color 0.2s;
 
     &:hover {
-    background-color: #f3f4f6;
-}`;
+        background-color: #f3f4f6;
+    }
+`;
 
 const TodoText = styled.span<{ $completed: boolean }>`
     flex: 1;
@@ -106,12 +105,9 @@ const TodoActionBttn = styled.button`
     transition: background-color 0.2s;
 
     &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
+        background-color: rgba(0, 0, 0, 0.05);
+    }
 `;
-
-
 
 function TodoPage() {
     const [todoList, setTodoList] = useState<Todo[]>([]);
@@ -152,40 +148,42 @@ function TodoPage() {
     };
 
     return (
-        <TodoContainer>
-            <Title>My To_Do ({todoList.length})</Title>
-            <TodoForm onSubmit={handleSubmit}>
-                <TodoInput
-                    type={"text"}
-                    placeholder={"Write your to do ..."}
-                    onChange={handleOnChange}
-                    value={todoValue}
-                />
-                <AddTodoBtn type="submit">Add To Do</AddTodoBtn>
-            </TodoForm>
-            <TodoDivider />
-            <TodoUl>
-                {todoList.map((item, index) => (
-                    <TodoLi key={index}>
-                        <TodoText $completed={item.completed}>{item.text}</TodoText>
-                        <TodoActionBttn
-                            onClick={() => {
-                                // 지금 현재의 completed 값을 반대로 저장
-                                return handleToggleTodo(index);
-                            }}>
-                            {item.completed ? "❤️" : "🤍"}
-                        </TodoActionBttn>
+        <Main>
+            <TodoContainer>
+                <Title>My To_Do ({todoList.length})</Title>
+                <TodoForm onSubmit={handleSubmit}>
+                    <TodoInput
+                        type={"text"}
+                        placeholder={"Write your to do ..."}
+                        onChange={handleOnChange}
+                        value={todoValue}
+                    />
+                    <AddTodoBtn type="submit">Add To Do</AddTodoBtn>
+                </TodoForm>
+                <TodoDivider />
+                <TodoUl>
+                    {todoList.map((item, index) => (
+                        <TodoLi key={index}>
+                            <TodoText $completed={item.completed}>{item.text}</TodoText>
+                            <TodoActionBttn
+                                onClick={() => {
+                                    // 지금 현재의 completed 값을 반대로 저장
+                                    return handleToggleTodo(index);
+                                }}>
+                                {item.completed ? "❤️" : "🤍"}
+                            </TodoActionBttn>
 
-                        <TodoActionBttn
-                            onClick={() => {
-                                return handleDeleteTodo(index);
-                            }}>
-                            ❌
-                        </TodoActionBttn>
-                    </TodoLi>
-                ))}
-            </TodoUl>
-        </TodoContainer>
+                            <TodoActionBttn
+                                onClick={() => {
+                                    return handleDeleteTodo(index);
+                                }}>
+                                ❌
+                            </TodoActionBttn>
+                        </TodoLi>
+                    ))}
+                </TodoUl>
+            </TodoContainer>
+        </Main>
     );
 }
 
