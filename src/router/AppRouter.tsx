@@ -27,10 +27,10 @@ function AppRouter() {
                     ],
                 },
                 {
-                    path: "Product",
+                    path: "product",
                     children: [
                         { index: true, element: <ProductList /> },
-                        { path: "ProductDetail", element: <ProductDetail /> }
+                        { path: "productDetail/:id", element: <ProductDetail /> }
                   ]
                 },
                 // { path: "book", element: <BookPage /> }
