@@ -25,7 +25,7 @@ const CoinWrapper = styled.div`
     ${Main};
     display: flex;
     width: 100%;
-    height: calc(100vh - 80px);
+    height: 100%;
     padding: 100px 0;
 `;
 
