@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router";
 import {ThemeContext} from "../contexts/theme/ThemeContexts.tsx";
 import {useContext} from "react";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 const HeadTop = styled.header`
     display: flex;
@@ -21,11 +22,25 @@ const Nav = styled.nav`
 
 const LogoBox = styled.div`
     display: flex;
+    width: 240px;
     font-weight: 900;
     font-size: 30px;
 `;
 
-const ToggleButton = styled.button``;
+const ButtonBox = styled.div`
+    display: flex;
+    width: 240px;
+    flex-direction: row-reverse;
+`;
+
+const ToggleButton = styled.button`
+    font-weight: 900;
+    font-size: 20px;
+    background-color: transparent;
+    color: ${({ theme }) => theme.color.text};
+    border: none;
+    cursor: pointer;
+`;
 
 function Header() {
     const context = useContext(ThemeContext);
@@ -45,9 +60,11 @@ function Header() {
                 <Link to={"board"}>Board</Link>
                 <Link to={"product"}>Product</Link>
             </Nav>
-            <ToggleButton type="button" onClick={toggleTheme}>
-                {theme === "light" ? "다크 모드로" : "라이트 모드로"}
-            </ToggleButton>
+            <ButtonBox>
+                <ToggleButton type="button" onClick={toggleTheme}>
+                    {theme === "light" ? <FaMoon /> : <FaSun />}
+                </ToggleButton>
+            </ButtonBox>
         </HeadTop>
     );
 }

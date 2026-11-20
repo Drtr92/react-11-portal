@@ -7,7 +7,8 @@ const Wrap = styled.div`
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
-    background-color: #f8f8f8;
+    background-color: ${({ theme }) => theme.color.background};
+    color: ${({ theme }) => theme.color.text};
 `;
 
 const OutletContainer = styled.div`

@@ -13,7 +13,6 @@ export type ProductListTypes = {
 const Container = styled.div`
     display: flex;
     width: 100%;
-    background-color: white;
     flex-direction: column;
     align-items: center;
 `;
@@ -58,7 +57,6 @@ const CardLink = styled(Link)`
     min-width: 0;
     padding: 15px;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.05) 0%, transparent 35%);
-    color: #666;
     text-decoration: none;
 `;
 

@@ -47,22 +47,22 @@ const CoinChart = styled.div`
     flex-shrink: 0;
     width: 30%;
     height: 100%;
-    
-    background-color: rgba(0, 0, 0, 0.05);
+    color: ${({ theme }) => theme.color.text};
+    background-color: color-mix(in srgb, ${({ theme }) => theme.color.text} 5%, transparent);
     padding: 5px;
     border-radius: 12px;
-    
+
     /* 스크롤바 숨기기 (기능은 유지) */
-    scrollbar-width: none;       /* Firefox */
-    -ms-overflow-style: none;    /* IE, 구형 Edge */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE, 구형 Edge */
     &::-webkit-scrollbar {
-        display: none;           /* Chrome, Safari, 최신 Edge */
+        display: none; /* Chrome, Safari, 최신 Edge */
     }
 `;
 
 const CoinDetails = styled.div`
     flex: 1;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: color-mix(in srgb, ${({ theme }) => theme.color.text} 5%, transparent);
     border-radius: 12px;
     display: flex;
 `;
@@ -84,7 +84,7 @@ const CoinUl = styled.ul`
 
 const CoinLi = styled.li`
     display: flex;
-    background-color: white;
+    background-color: ${({ theme }) => theme.color.background};
     border-radius: 10px;
     align-items: center;
     justify-content: space-between;
@@ -92,7 +92,11 @@ const CoinLi = styled.li`
     cursor: pointer;
 
     &:hover {
-        background-color: rgba(255, 255, 255, 0.6);
+        background-color: color-mix(
+            in srgb,
+            ${({ theme }) => theme.color.text} 25%,
+            transparent
+        );
     }
 `;
 
@@ -107,13 +111,11 @@ const CoinPrice = styled.div`
 `;
 
 const CoinName = styled.div`
-    color: #333;
     font-size: 15px;
     font-weight: 700;
 `;
 
 const CoinSymbol = styled.div`
-    color: #888;
     font-size: 11px;
     font-weight: 600;
 `;

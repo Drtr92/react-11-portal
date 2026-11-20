@@ -24,8 +24,8 @@ const ImgZone = styled.div`
     flex-direction: row;
     width: 100%;
     height: 450px;
-    color: white;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: ${({ theme }) => theme.color.text};
+    border-bottom: 1px solid color-mix(in srgb, ${({ theme }) => theme.color.text} 10%, transparent);
     overflow: hidden;
 `;
 
@@ -51,7 +51,7 @@ const ProductCategory = styled.div`
     padding: 100px 0 16px;
     font-size: 14px;
     font-weight: 500;
-    color: #888;
+    color: ${({ theme }) => theme.color.text};
 `;
 
 const ProductCopy = styled.div`
@@ -63,15 +63,15 @@ const ProductName = styled.div`
     padding: 6px 0;
     font-size: 40px;
     font-weight: 500;
-    color: #666;
-    border-top: 1px solid rgba(0, 0, 0, 0.075);
+    color: ${({ theme }) => theme.color.text};
+    border-top: 1px solid color-mix(in srgb, ${({ theme }) => theme.color.text} 10%, transparent);
 `;
 
 const Price = styled.div`
     margin: 40px 0 10px 0;
     font-size: 24px;
     font-weight: 300;
-    color: rgba(0, 0, 0, 0.5);
+    color: ${({ theme }) => theme.color.text};
 `;
 
 const BuyUi = styled.div`
@@ -89,14 +89,14 @@ const BuyButton = styled.button`
     border: none;
     outline: none;
     border-radius: 8px;
-    color: white;
-    background-color: #888;
+    color: ${({ theme }) => theme.color.background};
+    background-color: ${({ theme }) => theme.color.text};
     cursor: pointer;
     transition: 0.3s;
 
     &:hover {
         background-color: rgba(200, 200, 200, 0.7);
-        color: #666;
+        color: ${({ theme }) => theme.color.text};
     }
 `;
 
@@ -106,6 +106,7 @@ const QuantityButton = styled.button`
     padding: 8px;
     background: transparent;
     cursor: pointer;
+    color: ${({ theme }) => theme.color.text};
     font-size: 20px;
     font-weight: 300;
 `;
@@ -114,14 +115,14 @@ const Tags = styled.div`
     display: flex;
     flex-direction: row;
     gap: 24px;
-    color: #888;
+    color: ${({ theme }) => theme.color.text};
     margin: 100px 0;
     font-size: 12px;
     font-weight: 300;
 `;
 
 const Description = styled.div`
-    color: #333;
+    color: ${({ theme }) => theme.color.text};
     text-align: center;
     font-size: 14px;
     font-weight: 300;
@@ -131,23 +132,22 @@ const HrLine = styled.div`
     margin: 100px 0;
     width: 100%;
     height: 1px;
-    border-top: 1px solid rgba(0, 0, 0, 0.075);
+    border-top: 1px solid color-mix(in srgb, ${({ theme }) => theme.color.text} 10%, transparent);
 `;
 
 const BackLink = styled(Link)`
     margin-bottom: 100px;
     padding: 10px 28px;
-    border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 8px;
     font-size: 13px;
-    color: #666;
+    background-color: ${({ theme }) => theme.color.text};
+    color: ${({ theme }) => theme.color.background};
     text-decoration: none;
     transition: all 0.2s;
 
     &:hover {
-        background-color: #888;
-        color: white;
-        border-color: #888;
+        background-color: rgba(200, 200, 200, 0.7);
+        color: ${({ theme }) => theme.color.text};
     }
 `;
 

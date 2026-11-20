@@ -8,17 +8,17 @@ export const GlobalInput = styled.input`
     flex: 1;
     padding: 12px 16px;
     font-size: 1rem;
-    border: 2px solid #e1e1e1;
+    background-color: ${({ theme }) => theme.color.background};
+    color: ${({ theme }) => theme.color.text};
+    border: 2px solid rgba(128, 128, 128, 0.3);
     border-radius: 8px;
     outline: none;
-    transition: border-color 0.2s;
 
     &:focus {
-        border-color: #444;
+        border-color: ${({ theme }) => theme.color.text};
     }
     &:hover {
-        border-color: #444;
-        background-color: #efefef;
+        border-color: ${({ theme }) => theme.color.text};
     }
 `;
 
@@ -39,7 +39,8 @@ export const GlobalButton = styled.button`
 
 export const GlobalTitle = styled.h1`
     font-size: 1.8rem;
-    color: #333333;
+    color: ${({ theme }) => theme.color.text};
     margin-bottom: 20px;
     text-align: center;
+    transition: color 0.25s;
 `;

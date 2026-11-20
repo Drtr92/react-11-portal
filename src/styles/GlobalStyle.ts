@@ -19,7 +19,6 @@ const GlobalStyle = createGlobalStyle`
     body {
         background-color: ${({ theme }) => theme.color.background};
         color: ${({ theme }) => theme.color.text};
-        transition: background-color 0.25s, color 0.25s; // 놀라워라, 여기서도 트랜지션 적용이 가능하네요!
     }
 
 `;
