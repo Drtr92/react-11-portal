@@ -2,24 +2,8 @@ import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import SearchBar from "../MovieComponent/SearchBar.tsx";
 import { MovieContainer } from "./MovieHome.tsx";
-import styled from "styled-components";
 import type { MovieList } from "./MovieSearch.tsx";
-
-// eslint-disable-next-line
-export const BackBtn = styled.button`
-    display: block;
-    margin-bottom: 20px;
-    background-color: #ff5959;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 6px;
-
-    &:hover {
-        background-color: #ffaaaa;
-    }
-`;
+import { GlobalButton } from "../../../styles/Styles.tsx";
 
 type MovieDetails = MovieList & {
     Released: string;
@@ -47,12 +31,12 @@ function MovieDetail() {
     return (
         <MovieContainer>
             <div>
-                <BackBtn
+                <GlobalButton
                     onClick={() => {
                         navigate(-1);
                     }}>
                     &larr; 뒤로가기
-                </BackBtn>
+                </GlobalButton>
                 <SearchBar keyword={""} />
                 <div></div>
             </div>

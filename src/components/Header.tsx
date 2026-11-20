@@ -12,7 +12,7 @@ const HeadTop = styled.header`
     justify-content: space-between;
     align-items: center;
     padding: 20px 60px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid color-mix(in srgb, ${({ theme }) => theme.color.text} 5%, transparent);
 `;
 
 const Nav = styled.nav`

@@ -6,21 +6,27 @@ const StyledLink = styled(Link)`
     width: 200px;
     border-radius: 12px;
     padding: 10px;
-    background-color: white;
-    color: #333;
+    background-color: transparent;
+    color: ${({ theme }) => theme.color.text};
     display: flex;
     flex-direction: column;
     gap: 8px;
-    transition: all 0.5s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 
     img {
         width: 100%;
         border-radius: 8px;
     }
 
+    span {
+        font-size: 0.9rem;
+        color: color-mix(in srgb, ${({ theme }) => theme.color.text} 60%, transparent);
+    }
+
     &:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
+        background-color: color-mix(in srgb, ${({ theme }) => theme.color.text} 12%, transparent);
     }
 `;
 
