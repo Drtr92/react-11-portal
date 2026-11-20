@@ -12,14 +12,19 @@ export const GlobalInput = styled.input`
     border-radius: 8px;
     outline: none;
     transition: border-color 0.2s;
+
     &:focus {
-        border-color: #6366f1;
+        border-color: #444;
+    }
+    &:hover {
+        border-color: #444;
+        background-color: #efefef;
     }
 `;
 
 export const GlobalButton = styled.button`
     padding: 12px 20px;
-    background-color: #6366f1;
+    background-color: #777;
     color: white;
     font-weight: 600;
     border: none;
@@ -28,7 +33,7 @@ export const GlobalButton = styled.button`
     transition: background-color 0.2s;
 
     &:hover {
-        background-color: #4f46e5;
+        background-color: #444;
     }
 `;
 

@@ -4,11 +4,11 @@ import { Link } from "react-router";
 const HeadTop = styled.header`
     display: flex;
     height: 80px;
-    background-color: #666;
+    background-color: #f8f8f8;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    flex-shrink: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 `;
 
 const Nav = styled.nav`

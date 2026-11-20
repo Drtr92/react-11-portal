@@ -1,6 +1,7 @@
 import { Main } from "../../styles/Styles.tsx";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import {PercentText} from "./CoinComponent/CoinPersentStyles.tsx";
 
 export type Coins = {
     id: string;
@@ -36,7 +37,6 @@ const CoinContainer = styled.div`
     width: 70%;
     height: 100%;
     gap: 10px;
-    background-color: tomato;
 `;
 
 const CoinChart = styled.div`
@@ -45,6 +45,10 @@ const CoinChart = styled.div`
     flex-shrink: 0;
     width: 30%;
     height: 100%;
+    
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 5px;
+    border-radius: 12px;
     
     /* 스크롤바 숨기기 (기능은 유지) */
     scrollbar-width: none;       /* Firefox */
@@ -56,7 +60,9 @@ const CoinChart = styled.div`
 
 const CoinDetails = styled.div`
     display: flex;
-    flex:1;
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
 `;
 
 const CoinUl = styled.ul`
@@ -68,10 +74,11 @@ const CoinUl = styled.ul`
 
 const CoinLi = styled.li`
     display: flex;
-    background-color: goldenrod;
+    background-color: white;
     border-radius: 10px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0 20px;
 `;
 
 const CoinName = styled.div`
@@ -81,6 +88,7 @@ const CoinName = styled.div`
 
 const CoinPrice = styled.div`
     display: flex;
+    gap: 10px;
 `;
 
 function CoinPage() {
@@ -121,7 +129,10 @@ function CoinPage() {
                                         <div>{coin.name}</div>
                                         <div>{coin.symbol}</div>
                                     </CoinName>
-                                    <CoinPrice></CoinPrice>
+                                    <CoinPrice>
+                                        <div>{coin.price_usd} $</div>
+                                        <PercentText value={coin.percent_change_24h} />
+                                    </CoinPrice>
                                 </CoinLi>
                             ))}
                         </CoinUl>
