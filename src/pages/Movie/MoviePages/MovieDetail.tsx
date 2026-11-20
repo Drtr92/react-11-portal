@@ -33,6 +33,12 @@ const TopBar = styled.div`
     & > button:first-child {
         justify-self: start;
     }
+    /*
+    auto (가운데 열): 내부에 들어간 콘텐츠(텍스트, 이미지, 버튼 등)의 크기만큼만 너비를 차지합니다.
+    콘텐츠가 길어지면 늘어나고, 짧아지면 줄어듭니다.
+    1fr (양옆 열): fr은 Fraction(비율, 파편)의 약자입니다.
+    전체 너비에서 auto가 차지한 공간을 빼고, 남은 여유 공간을 1 : 1 비율로 똑같이 나눠 가집니다.
+    */
 `;
 
 const Poster = styled.img`
