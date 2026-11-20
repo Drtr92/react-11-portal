@@ -8,11 +8,12 @@ const HeadTop = styled.header`
     display: flex;
     height: 80px;
     background-color: ${({ theme }) => theme.color.background};
-    color: ${({ theme }) => theme.color.text};
+    color: color-mix(in srgb, ${({ theme }) => theme.color.text} 90%, transparent);
     justify-content: space-between;
     align-items: center;
     padding: 20px 60px;
     border-bottom: 1px solid color-mix(in srgb, ${({ theme }) => theme.color.text} 5%, transparent);
+    font-weight: 600;
 `;
 
 const Nav = styled.nav`
@@ -21,9 +22,10 @@ const Nav = styled.nav`
 `;
 
 const LogoBox = styled.div`
+    color: ${({ theme }) => theme.color.primary};
     display: flex;
     width: 240px;
-    font-weight: 900;
+    font-weight: 800;
     font-size: 30px;
 `;
 
@@ -50,7 +52,7 @@ function Header() {
 
     return (
         <HeadTop>
-            <LogoBox>DT's DashBoard</LogoBox>
+            <LogoBox>DT's Artlier</LogoBox>
             <Nav>
                 <Link to={"/"}>Home</Link>
                 <Link to={"todo"}>To_do</Link>

@@ -45,7 +45,7 @@ const CoinChart = styled.div`
     overflow: auto;
     overflow-x: hidden;
     flex-shrink: 0;
-    width: 30%;
+    width: 40%;
     height: 100%;
     color: ${({ theme }) => theme.color.text};
     background-color: color-mix(in srgb, ${({ theme }) => theme.color.text} 5%, transparent);
@@ -88,7 +88,7 @@ const CoinLi = styled.li`
     border-radius: 10px;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 40px;
+    padding: 5px 25px;
     cursor: pointer;
 
     &:hover {
@@ -161,7 +161,7 @@ function CoinPage() {
                                         <CoinSymbol>{coin.symbol}</CoinSymbol>
                                     </CoinTag>
                                     <CoinPrice>
-                                        <div>{coin.price_usd} $</div>
+                                        <div>{Number(coin.price_usd).toFixed(2)} $</div>
                                         <PercentText value={coin.percent_change_24h} />
                                     </CoinPrice>
                                 </CoinLi>

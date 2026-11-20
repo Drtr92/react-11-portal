@@ -13,7 +13,7 @@ const HomeContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 70px auto; // 임시 수치
+    margin: 70px auto;
 `;
 
 function Home() {

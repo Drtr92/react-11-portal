@@ -214,7 +214,7 @@ function ProductDetail() {
                 <Tags>{tagMaker}</Tags>
                 <Description>{list.description}</Description>
                 <HrLine />
-                <BackLink to="/product">목록으로 돌아가기</BackLink>
+                <BackLink to="/product">목록으로</BackLink>
                 <div />
             </Main>
         </Container>

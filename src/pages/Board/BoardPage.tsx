@@ -93,7 +93,7 @@ function BoardPage() {
 
     return (
         <BoardContainer>
-            <GlobalTitle>커뮤니티 게시판</GlobalTitle>
+            <GlobalTitle>Community Board</GlobalTitle>
             <BoardTable>
                 <thead>
                     <tr>
