@@ -59,10 +59,18 @@ const CoinChart = styled.div`
 `;
 
 const CoinDetails = styled.div`
-    display: flex;
     flex: 1;
     background-color: rgba(0, 0, 0, 0.05);
     border-radius: 12px;
+    display: flex;
+`;
+
+const CoinDetailDsc = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: space-between;
+    gap: 20px;
 `;
 
 const CoinUl = styled.ul`
@@ -78,10 +86,15 @@ const CoinLi = styled.li`
     border-radius: 10px;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 5px 40px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.6);
+    }
 `;
 
-const CoinName = styled.div`
+const CoinTag = styled.div`
     display: flex;
     flex-direction: column;
 `;
@@ -91,9 +104,22 @@ const CoinPrice = styled.div`
     gap: 10px;
 `;
 
+const CoinName = styled.div`
+    color: #333;
+    font-size: 15px;
+    font-weight: 700;
+`;
+
+const CoinSymbol = styled.div`
+    color: #888;
+    font-size: 11px;
+    font-weight: 600;
+`;
+
 function CoinPage() {
     const [coins, setCoins] = useState<Coins[]>([]);
     const [loading, setLoading] = useState(true);
+    const [selectedCoin, setSelectedCoin] = useState<Coins | null>(null);
 
     useEffect(() => {
         fetch("https://api.coinlore.net/api/tickers/?start=0&limit=50")
@@ -124,11 +150,11 @@ function CoinPage() {
                     <CoinChart>
                         <CoinUl>
                             {coins.map(coin => (
-                                <CoinLi key={coin.id}>
-                                    <CoinName>
-                                        <div>{coin.name}</div>
-                                        <div>{coin.symbol}</div>
-                                    </CoinName>
+                                <CoinLi key={coin.id} onClick={() => setSelectedCoin(coin)}>
+                                    <CoinTag>
+                                        <CoinName>{coin.name}</CoinName>
+                                        <CoinSymbol>{coin.symbol}</CoinSymbol>
+                                    </CoinTag>
                                     <CoinPrice>
                                         <div>{coin.price_usd} $</div>
                                         <PercentText value={coin.percent_change_24h} />
@@ -137,7 +163,30 @@ function CoinPage() {
                             ))}
                         </CoinUl>
                     </CoinChart>
-                    <CoinDetails></CoinDetails>
+                    <CoinDetails>
+                        {selectedCoin ? (
+                            <CoinDetailDsc>
+                                <h2>
+                                    {selectedCoin.name} ({selectedCoin.symbol})
+                                </h2>
+                                <p>현재가: ${selectedCoin.price_usd}</p>
+                                <p>
+                                    1시간 변동:{" "}
+                                    <PercentText value={selectedCoin.percent_change_1h} />
+                                </p>
+                                <p>
+                                    24시간 변동:{" "}
+                                    <PercentText value={selectedCoin.percent_change_24h} />
+                                </p>
+                                <p>
+                                    7일 변동: <PercentText value={selectedCoin.percent_change_7d} />
+                                </p>
+                                <p>시가총액: ${selectedCoin.market_cap_usd}</p>
+                            </CoinDetailDsc>
+                        ) : (
+                            <CoinDetailDsc>좌측에서 코인을 선택해 주세요.</CoinDetailDsc>
+                        )}
+                    </CoinDetails>
                 </CoinContainer>
             </CoinWrapper>
         </>
