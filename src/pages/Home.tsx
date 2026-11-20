@@ -39,13 +39,11 @@ const Headline = styled.h2`
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 10px;
-    word-break: keep-all;
 `;
 
 const Description = styled.p`
     font-size: 0.95rem;
     color: color-mix(in srgb, ${({ theme }) => theme.color.text} 70%, transparent);
-    word-break: keep-all;
 `;
 
 /*
