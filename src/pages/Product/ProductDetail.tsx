@@ -10,72 +10,11 @@ type ProductDetailTypes = ProductListTypes & {
     images: string[];
 };
 
-/* ================= Styled Components ================= */
-
 const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
-    height: 100%;
-`;
-
-const Header2 = styled.div`
-    width: 100%;
-    height: 8dvh;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgba(0, 0, 0, 0.012);
-    padding: 0 40px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-`;
-
-const Logo = styled(Link)`
-    margin-left: 20px;
-    display: flex;
-    font-size: 1.3rem;
-    font-weight: bold;
-    letter-spacing: 12px;
-    transform: scaleX(1.1);
-    color: #666;
-    transition: color 0.3s;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    text-decoration: none;
-
-    &:hover {
-        color: rgba(0, 0, 0, 0.35);
-    }
-`;
-
-const Sign2 = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 25px;
-    margin-right: 10px;
-    font-size: 0.75rem;
-    font-weight: 400;
-    letter-spacing: 2px;
-    color: #666;
-    cursor: pointer;
-`;
-
-const SignButton = styled.div`
-    transition:
-        color 0.3s,
-        transform 0.3s;
-
-    &:hover {
-        color: rgba(0, 0, 0, 0.35);
-        transform: scale(1.1);
-    }
 `;
 
 const ImgZone = styled.div`
@@ -84,7 +23,7 @@ const ImgZone = styled.div`
     align-items: center;
     flex-direction: row;
     width: 100%;
-    height: 62dvh;
+    height: 450px;
     color: white;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     overflow: hidden;
@@ -101,7 +40,6 @@ const Main = styled.div`
     align-items: center;
     justify-content: flex-start;
     width: 45%;
-    height: 1000px;
 `;
 
 const ProductCategory = styled.div`
@@ -196,7 +134,22 @@ const HrLine = styled.div`
     border-top: 1px solid rgba(0, 0, 0, 0.075);
 `;
 
-/* ================= Component ================= */
+const BackLink = styled(Link)`
+    margin-bottom: 100px;
+    padding: 10px 28px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    font-size: 13px;
+    color: #666;
+    text-decoration: none;
+    transition: all 0.2s;
+
+    &:hover {
+        background-color: #888;
+        color: white;
+        border-color: #888;
+    }
+`;
 
 function ProductDetail() {
     const { id } = useParams();
@@ -236,14 +189,6 @@ function ProductDetail() {
 
     return (
         <Container>
-            <Header2>
-                <Logo to="/product">BEAUTY</Logo>
-                <Sign2>
-                    <SignButton>로그인</SignButton>
-                    <SignButton>회원가입</SignButton>
-                    <SignButton>KOR</SignButton>
-                </Sign2>
-            </Header2>
             <ImgZone>
                 {list.images.map((item, index) => (
                     <ProductImage key={index} src={item} alt={list.title} />
@@ -269,6 +214,7 @@ function ProductDetail() {
                 <Tags>{tagMaker}</Tags>
                 <Description>{list.description}</Description>
                 <HrLine />
+                <BackLink to="/product">목록으로 돌아가기</BackLink>
                 <div />
             </Main>
         </Container>
