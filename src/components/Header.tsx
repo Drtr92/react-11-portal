@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import { Link } from "react-router";
+import {ThemeContext} from "../contexts/theme/ThemeContexts.tsx";
+import {useContext} from "react";
 
 const HeadTop = styled.header`
     display: flex;
     height: 80px;
-    background-color: #f8f8f8;
+    background-color: ${({ theme }) => theme.color.background};
+    color: ${({ theme }) => theme.color.text};
     justify-content: space-between;
     align-items: center;
     padding: 20px 60px;
@@ -25,6 +28,11 @@ const LogoBox = styled.div`
 const ToggleButton = styled.button``;
 
 function Header() {
+    const context = useContext(ThemeContext);
+    if (!context) return null;
+
+    const { theme, toggleTheme } = context;
+
     return (
         <HeadTop>
             <LogoBox>DT's DashBoard</LogoBox>
@@ -37,7 +45,9 @@ function Header() {
                 <Link to={"board"}>Board</Link>
                 <Link to={"product"}>Product</Link>
             </Nav>
-            <ToggleButton>버튼</ToggleButton>
+            <ToggleButton type="button" onClick={toggleTheme}>
+                {theme === "light" ? "다크 모드로" : "라이트 모드로"}
+            </ToggleButton>
         </HeadTop>
     );
 }
