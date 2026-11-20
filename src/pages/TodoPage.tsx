@@ -24,7 +24,7 @@ const TodoForm = styled.form`
 const TodoDivider = styled.hr`
     border: none;
     height: 1px;
-    background-color: #eaeaea;
+    background-color: color-mix(in srgb, ${({ theme }) => theme.color.text} 15%, transparent);
     margin: 20px 0;
 `;
 
@@ -37,13 +37,13 @@ const TodoLi = styled.li`
     justify-content: space-between;
     align-items: center;
     padding: 12px 16px;
-    background-color: #f9fafb;
+    background-color: color-mix(in srgb, ${({ theme }) => theme.color.text} 10%, transparent);
     border-radius: 8px;
     margin-bottom: 10px;
-    transition: backgound-color 0.2s;
+    transition: background-color 0.2s;
 
     &:hover {
-        background-color: #f3f4f6;
+        background-color: color-mix(in srgb, ${({ theme }) => theme.color.text} 30%, transparent);
     }
 `;
 
@@ -52,8 +52,9 @@ const TodoText = styled.span<{ $completed: boolean }>`
     font-size: 1rem;
     word-break: break-all;
     margin-right: 10px;
-    color: ${props => (props.$completed ? "#9ca3af" : "#1f2937")};
-    text-decoration: ${props => (props.$completed ? "line-through" : "none")};
+    color: ${({ theme, $completed }) =>
+        $completed ? `color-mix(in srgb, ${theme.color.text} 40%, transparent)` : theme.color.text};
+    text-decoration: ${({ $completed }) => ($completed ? "line-through" : "none")};
 `;
 
 const TodoActionBttn = styled.button`
@@ -69,7 +70,7 @@ const TodoActionBttn = styled.button`
     transition: background-color 0.2s;
 
     &:hover {
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: color-mix(in srgb, ${({ theme }) => theme.color.text} 10%, transparent);
     }
 `;
 
