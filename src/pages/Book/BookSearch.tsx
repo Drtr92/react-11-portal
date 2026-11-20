@@ -23,30 +23,38 @@ type ApiResponse = {
 export const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
 const Container = styled.div`
-    padding: 70px 30px 30px;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 70px 0;
+    color: ${({ theme }) => theme.color.text};
+`;
+
+const SearchBarWrapper = styled.div`
+    margin-bottom: 24px;
 `;
 
 const Message = styled.div`
-    padding: 20px 0;
-    color: #666;
+    padding: 40px 0;
+    color: color-mix(in srgb, ${({ theme }) => theme.color.text} 60%, transparent);
     text-align: center;
 `;
 
 const BookLink = styled(Link)`
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px;
-    border-radius: 8px;
+    gap: 16px;
+    padding: 14px 16px;
+    border-radius: 10px;
     background-color: transparent;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     border: 2px solid color-mix(in srgb, ${({ theme }) => theme.color.text} 15%, transparent);
-    transition: all 0.3s;
+    transition: all 0.2s;
     color: ${({ theme }) => theme.color.text};
     text-decoration: none;
 
     &:hover {
         background-color: color-mix(in srgb, ${({ theme }) => theme.color.text} 10%, transparent);
+        border-color: color-mix(in srgb, ${({ theme }) => theme.color.text} 30%, transparent);
     }
 `;
 
@@ -55,11 +63,13 @@ const Cover = styled.img`
     height: 90px;
     object-fit: cover;
     border-radius: 4px;
+    flex-shrink: 0;
 `;
 
 const NoCover = styled.div`
     width: 60px;
     height: 90px;
+    flex-shrink: 0;
     border-radius: 4px;
     display: flex;
     justify-content: center;
@@ -75,7 +85,7 @@ const Title = styled.div`
 `;
 
 const Authors = styled.div`
-    font-size: 12px;
+    font-size: 13px;
     color: color-mix(in srgb, ${({ theme }) => theme.color.text} 65%, transparent);
 `;
 
@@ -109,7 +119,10 @@ function BookSearch() {
     return (
         <Container>
             <GlobalTitle>검색결과 : {keyword}</GlobalTitle>
-            <SearchBar keyword={keyword || ""} />
+            <SearchBarWrapper>
+                <SearchBar keyword={keyword || ""} />
+            </SearchBarWrapper>
+
             {loading ? (
                 <Message>로딩 중입니다...</Message>
             ) : list.length === 0 ? (

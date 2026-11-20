@@ -6,7 +6,7 @@ import { GlobalButton } from "../../styles/Styles.tsx";
 
 const Container = styled.div`
     max-width: 720px;
-    margin: 0 auto;
+    margin: 70px auto;
     padding: 40px 24px 80px;
     display: flex;
     flex-direction: column;
