@@ -4,7 +4,7 @@ import { Link } from "react-router";
 const HeadTop = styled.header`
     display: flex;
     height: 80px;
-    background-color: tomato;
+    background-color: #666;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
@@ -33,6 +33,7 @@ function Header() {
                 <Link to={"book"}>Book</Link>
                 <Link to={"coin"}>Coin</Link>
                 <Link to={"product"}>Product</Link>
+                <Link to={"board"}>Board</Link>
             </Nav>
             <ToggleButton>버튼</ToggleButton>
         </HeadTop>

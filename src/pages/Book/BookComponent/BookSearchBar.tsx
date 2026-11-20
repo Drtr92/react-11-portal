@@ -8,6 +8,7 @@ const Form = styled.form`
     flex-direction: row;
     width: 100%;
     gap: 10px;
+    margin-bottom: 10px;
 `;
 
 function BookSearchBar({ keyword }: { keyword?: string }) {

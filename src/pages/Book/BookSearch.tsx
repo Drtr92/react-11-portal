@@ -2,6 +2,7 @@ import { Link, useSearchParams } from "react-router";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import SearchBar from "./BookComponent/BookSearchBar.tsx";
+import { GlobalTitle } from "../../styles/Styles.tsx";
 
 export type Book = {
     id: string;
@@ -107,7 +108,7 @@ function BookSearch() {
 
     return (
         <Container>
-            <h3>검색결과 : {keyword}</h3>
+            <GlobalTitle>검색결과 : {keyword}</GlobalTitle>
 
             <SearchBar keyword={keyword || ""} />
 

@@ -11,6 +11,8 @@ import ProductDetail from "../pages/Product/ProductDetail.tsx";
 import BookPage from "../pages/Book/BookPage.tsx";
 import BookSearch from "../pages/Book/BookSearch.tsx";
 import BookDetail from "../pages/Book/BookDetail.tsx";
+import BoardPage from "../pages/Board/BoardPage.tsx";
+import BoardDetail from "../pages/Board/BoardDetail.tsx";
 
 function AppRouter() {
     const routes: RouteObject[] = [
@@ -44,6 +46,13 @@ function AppRouter() {
                         { path: `bookDetail/:id`, element: <BookDetail /> },
                     ],
                 },
+                {
+                    path: "board",
+                    children: [
+                        { index: true, element: <BoardPage /> },
+                        { path: "boardDetail/:id", element: <BoardDetail /> },
+                    ],
+                }
             ],
         },
     ];
