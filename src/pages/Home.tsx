@@ -18,7 +18,7 @@ const HomeContainer = styled.div`
 `;
 
 const WelcomeCard = styled.div`
-    padding: 36px 32px;
+    padding: 40px;
     border-radius: 14px;
     background-color: color-mix(in srgb, ${({ theme }) => theme.color.text} 5%, transparent);
 `;
@@ -27,7 +27,7 @@ const SubBadge = styled.span`
     display: inline-block;
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.06em;
+    letter-spacing: 1px;
     padding: 4px 10px;
     border-radius: 999px;
     margin-bottom: 16px;
