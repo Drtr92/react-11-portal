@@ -171,11 +171,11 @@ function CoinPage() {
                                 </h2>
                                 <p>현재가: ${selectedCoin.price_usd}</p>
                                 <p>
-                                    1시간 변동:{" "}
+                                    1시간 변동:
                                     <PercentText value={selectedCoin.percent_change_1h} />
                                 </p>
                                 <p>
-                                    24시간 변동:{" "}
+                                    24시간 변동:
                                     <PercentText value={selectedCoin.percent_change_24h} />
                                 </p>
                                 <p>
