@@ -1,4 +1,4 @@
-import { Main } from "../../styles/Styles.tsx";
+import { GlobalTitle, Main } from "../../styles/Styles.tsx";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import {PercentText} from "./CoinComponent/CoinPersentStyles.tsx";
@@ -28,6 +28,8 @@ const CoinWrapper = styled.div`
     width: 100%;
     height: 100%;
     padding: 100px 0;
+    flex-direction: column;
+    justify-content: center;
 `;
 
 const CoinContainer = styled.div`
@@ -140,12 +142,13 @@ function CoinPage() {
             }, [])
 
     if (loading) {
-            return <div> Loading... </div>
+            return <div> 데이터를 로드중 입니다... </div>
     }
 
     return (
         <>
             <CoinWrapper>
+                <GlobalTitle>Coin</GlobalTitle>
                 <CoinContainer>
                     <CoinChart>
                         <CoinUl>

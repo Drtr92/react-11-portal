@@ -14,7 +14,7 @@ const BooksContainer = styled.div`
     flex-direction: column;
     align-items: center;
     width: 400px;
-    margin: 80px auto;
+    margin: 40px auto;
     padding: 30px;
 `;
 
@@ -22,7 +22,7 @@ function BookPage() {
     return (
         <Container>
             <BooksContainer>
-                <GlobalTitle>Google Books 검색</GlobalTitle>
+                <GlobalTitle>Book</GlobalTitle>
                 <SearchBar keyword="" />
             </BooksContainer>
         </Container>

@@ -13,7 +13,7 @@ export const MovieContainer = styled.div`
 // eslint-disable-next-line
 export const MovieDiv = styled.div`
     display: flex;
-    margin: 80px auto;
+    margin: 40px auto;
     flex-direction: column;
     align-items: center;
 `;
@@ -22,7 +22,7 @@ function MovieHome() {
     return (
         <MovieContainer>
             <MovieDiv>
-                <GlobalTitle>OMD Flicks</GlobalTitle>
+                <GlobalTitle>Movie</GlobalTitle>
                 <SearchBar keyword={""} />
             </MovieDiv>
         </MovieContainer>

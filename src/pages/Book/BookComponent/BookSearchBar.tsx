@@ -28,7 +28,7 @@ function BookSearchBar({ keyword }: { keyword?: string }) {
 
     return (
         <Form onSubmit={onSubmitHandler}>
-            <GlobalInput onChange={onChangeHandler} value={inputKeyword} />
+            <GlobalInput onChange={onChangeHandler} value={inputKeyword} placeholder={"Search google books..."} />
             <GlobalButton type="submit">검색</GlobalButton>
         </Form>
     );

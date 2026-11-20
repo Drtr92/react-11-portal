@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router";
 import { MovieContainer, MovieDiv } from "./MovieHome.tsx";
 import SearchBar from "../MovieComponent/SearchBar.tsx";
 import MovieCard from "../MovieComponent/MovieCard.tsx";
+import { GlobalTitle } from "../../../styles/Styles.tsx";
 
 
 const List = styled.ul`
@@ -63,7 +64,7 @@ function MovieSearch() {
     return (
         <MovieContainer>
             <MovieDiv>
-                    <h1>검색 키워드 : {keyword}</h1>
+                    <GlobalTitle>검색 키워드 : {keyword}</GlobalTitle>
                     <SearchBar keyword={keyword || ""} />
                     {loading && <p>Loading...</p>}
                     {error && <p>{error}</p>}

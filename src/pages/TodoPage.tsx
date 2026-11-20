@@ -9,11 +9,10 @@ type Todo = {
 
 const TodoContainer = styled.div`
     max-width: 480px;
-    margin: 80px auto;
+    margin: 40px auto;
     padding: 30px;
-    background-color: white;
+    background-color: transparent;
     border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 `;
 
 const TodoForm = styled.form`
@@ -115,7 +114,7 @@ function TodoPage() {
     return (
         <Main>
             <TodoContainer>
-                <GlobalTitle>My To_Do ({todoList.length})</GlobalTitle>
+                <GlobalTitle>To_Do ({todoList.length})</GlobalTitle>
                 <TodoForm onSubmit={handleSubmit}>
                     <GlobalInput
                         type={"text"}

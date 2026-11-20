@@ -1,4 +1,4 @@
-import { Main } from "../styles/Styles.tsx";
+import { GlobalTitle, Main } from "../styles/Styles.tsx";
 import styled from "styled-components";
 
 const HomeField = styled.div`
@@ -13,13 +13,15 @@ const HomeContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 80px auto; // 임시 수치
+    margin: 70px auto; // 임시 수치
 `;
 
 function Home() {
     return (
         <HomeField>
-            <HomeContainer>home</HomeContainer>
+            <HomeContainer>
+                <GlobalTitle>Home</GlobalTitle>
+            </HomeContainer>
         </HomeField>
     );
 }

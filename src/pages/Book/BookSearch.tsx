@@ -23,7 +23,7 @@ type ApiResponse = {
 export const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
 const Container = styled.div`
-    padding: 30px;
+    padding: 70px 30px 30px;
 `;
 
 const Message = styled.div`
@@ -109,9 +109,7 @@ function BookSearch() {
     return (
         <Container>
             <GlobalTitle>검색결과 : {keyword}</GlobalTitle>
-
             <SearchBar keyword={keyword || ""} />
-
             {loading ? (
                 <Message>로딩 중입니다...</Message>
             ) : list.length === 0 ? (
