@@ -6,8 +6,8 @@ import { GlobalButton } from "../../styles/Styles.tsx";
 
 const Container = styled.div`
     max-width: 720px;
-    margin: 70px auto;
-    padding: 40px 24px 80px;
+    margin: 0 auto;
+    padding: 70px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,9 +16,13 @@ const Container = styled.div`
 
 const TopBar = styled.div`
     width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 24px;
+    display: grid;
+    align-items: center;
+    margin-bottom: 32px;
+
+    & > button:first-child {
+        justify-self: start;
+    }
 `;
 
 const Cover = styled.img`
@@ -26,7 +30,7 @@ const Cover = styled.img`
     height: 300px;
     object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 `;
 
@@ -34,7 +38,7 @@ const NoCover = styled.div`
     width: 200px;
     height: 300px;
     border-radius: 8px;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,16 +69,8 @@ const Description = styled.div`
     font-size: 0.98rem;
     line-height: 1.8;
     color: color-mix(in srgb, ${({ theme }) => theme.color.text} 88%, transparent);
-    word-break: keep-all;  // keep-all을 주면: 영어처럼 띄어쓰기(어절) 단위로 통째로 다음 줄로 넘겨줌.
+    word-break: keep-all;
 
-    /*
-    Google Books API의 description 데이터 안에는 종종
-    <p>첫 번째 문단...</p><p>두 번째 문단...</p> 형태로 HTML 태그가 직접 담겨서 내려온다.
-    styled-components는 일반 CSS처럼 중첩 문법을 지원하기 때문에,
-    Description 안에 p { ... }라고 적어두면 "Description 내부에 있는 모든 <p> 태그"에만 해당 스타일이 적용.
-    글로벌 CSS 리셋(margin: 0) 때문에 문단끼리 다닥다닥 붙어 보일 수 있는 걸 막고,
-    문단 사이에 12px씩 숨통을 틔워주는 역할임.
-    */
     p {
         margin-bottom: 12px;
     }
@@ -115,12 +111,13 @@ function BookDetail() {
                 </GlobalButton>
             </TopBar>
 
-            <Title>{book.volumeInfo.title}</Title>
             {book.volumeInfo.imageLinks ? (
                 <Cover src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
             ) : (
                 <NoCover>No cover</NoCover>
             )}
+
+            <Title>{book.volumeInfo.title}</Title>
             <Authors>{book.volumeInfo.authors?.join(", ")}</Authors>
             <Description dangerouslySetInnerHTML={{ __html: book.volumeInfo.description || "" }} />
         </Container>
