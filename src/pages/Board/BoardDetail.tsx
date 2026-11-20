@@ -5,38 +5,44 @@ import styled from "styled-components";
 import { BoardContainer, BoardLoading } from "./BoardComponent/BoardGlobalStyles.ts";
 import { GlobalTitle } from "../../styles/Styles.tsx";
 
-const Article = styled.article`
-    padding-top: 40px;
-`;
-
 const BackLink = styled(Link)`
-    color: #666;
+    display: inline-flex;
+    align-items: center;
+    color: ${({ theme }) => theme.color.text};
     font-size: 14px;
+    text-decoration: none;
     margin-bottom: 32px;
-    padding: 8px 12px;
+    padding: 14px;
     border-radius: 6px;
-    background-color: #f1f3f5;
-    border: 1px solid #666;
-
+    background-color: color-mix(in srgb, ${({ theme }) => theme.color.text} 15%, transparent);
+    transition: background-color,color 0.2s;
     &:hover {
-        background-color: #e9ecef;
-        color: #0077ff;
+        background-color: color-mix(in srgb, ${({ theme }) => theme.color.text} 35%, transparent);
     }
 `;
 
+const Article = styled.article`
+    width: 100%;
+`;
+
 const Meta = styled.div`
-    color: #888;
-    margin-bottom: 40px;
+    font-size: 0.9rem;
+    color: color-mix(in srgb, ${({ theme }) => theme.color.text} 60%, transparent);
+    padding-bottom: 24px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid color-mix(in srgb, ${({ theme }) => theme.color.text} 15%, transparent);
 `;
 
 const Body = styled.div`
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     line-height: 1.8;
-    white-space: pre-wrap; /* '\\n'이라고 하는 줄바꿈 기호를 줄바꿈 처리로 사용하겠다 */
+    color: color-mix(in srgb, ${({ theme }) => theme.color.text} 90%, transparent);
+    white-space: pre-wrap;
+    word-break: keep-all;
 `;
 
 function BoardDetail() {
-    const { id } = useParams(); // id의 타입은 string | undefined
+    const { id } = useParams();
 
     const [post, setPost] = useState<BoardPost | null>(null);
     const [loading, setLoading] = useState(true);
@@ -67,7 +73,7 @@ function BoardDetail() {
 
     return (
         <BoardContainer>
-            <BackLink to={"/board"}>&larr; 목록으로 돌아가기</BackLink>
+            <BackLink to={"/board"}>&larr; 목록으로</BackLink>
 
             <Article>
                 <GlobalTitle>{post.title}</GlobalTitle>
