@@ -19,6 +19,14 @@ const HeadTop = styled.header`
 const Nav = styled.nav`
     display: flex;
     gap: 30px;
+    a {
+        color: ${({ theme }) => theme.color.text};
+        text-decoration: none;
+        transition: color 0.2s;
+        &:hover {
+            color: color-mix(in srgb, ${({ theme }) => theme.color.text} 50%, transparent);
+        }
+    }
 `;
 
 const LogoBox = styled.div`
@@ -42,6 +50,10 @@ const ToggleButton = styled.button`
     color: ${({ theme }) => theme.color.text};
     border: none;
     cursor: pointer;
+    transition: color 0.2s; 
+    &:hover {
+    color: color-mix(in srgb, ${({ theme }) => theme.color.text} 50%, transparent);
+    }
 `;
 
 function Header() {
