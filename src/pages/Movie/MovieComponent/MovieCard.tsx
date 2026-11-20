@@ -11,7 +11,7 @@ const StyledLink = styled(Link)`
     display: flex;
     flex-direction: column;
     gap: 8px;
-    transition: all 0.3s;
+    transition: background-color 0.3s;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 
     img {

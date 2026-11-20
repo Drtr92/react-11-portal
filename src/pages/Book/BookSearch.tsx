@@ -38,15 +38,15 @@ const BookLink = styled(Link)`
     gap: 12px;
     padding: 12px;
     border-radius: 8px;
-    background-color: white;
+    background-color: transparent;
     margin-bottom: 10px;
-    border: 1px solid #ddd;
-    transition: all 0.5s;
-    color: #333;
+    border: 2px solid color-mix(in srgb, ${({ theme }) => theme.color.text} 15%, transparent);
+    transition: all 0.3s;
+    color: ${({ theme }) => theme.color.text};
     text-decoration: none;
 
     &:hover {
-        background-color: #f3f3f3;
+        background-color: color-mix(in srgb, ${({ theme }) => theme.color.text} 10%, transparent);
     }
 `;
 
@@ -65,8 +65,8 @@ const NoCover = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 11px;
-    color: #777;
-    background-color: #eee;
+    color: color-mix(in srgb, ${({ theme }) => theme.color.text} 50%, transparent);
+    background-color: color-mix(in srgb, ${({ theme }) => theme.color.text} 10%, transparent);
 `;
 
 const Title = styled.div`
@@ -76,7 +76,7 @@ const Title = styled.div`
 
 const Authors = styled.div`
     font-size: 12px;
-    color: #555;
+    color: color-mix(in srgb, ${({ theme }) => theme.color.text} 65%, transparent);
 `;
 
 function BookSearch() {
