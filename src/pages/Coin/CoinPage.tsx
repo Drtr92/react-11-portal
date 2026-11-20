@@ -21,11 +21,49 @@ export type Coins = {
     msupply: string;
 };
 
+const CoinWrapper = styled.div`
+    ${Main};
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 80px);
+    padding: 100px 0;
+`;
+
+const CoinContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 70%;
+    height: 100%;
+    gap: 10px;
+    background-color: tomato;
+`;
+
+const CoinChart = styled.div`
+    overflow: auto;
+    overflow-x: hidden;
+    flex-shrink: 0;
+    width: 30%;
+    height: 100%;
+    
+    /* 스크롤바 숨기기 (기능은 유지) */
+    scrollbar-width: none;       /* Firefox */
+    -ms-overflow-style: none;    /* IE, 구형 Edge */
+    &::-webkit-scrollbar {
+        display: none;           /* Chrome, Safari, 최신 Edge */
+    }
+`;
+
+const CoinDetails = styled.div`
+    display: flex;
+    flex:1;
+`;
+
 const CoinUl = styled.ul`
     display: flex;
     flex-direction: column;
-    max-width: 200px;
-    gap: 10px;
+    gap: 10px 0;
+    width: 100%;
 `;
 
 const CoinLi = styled.li`
@@ -65,7 +103,7 @@ function CoinPage() {
                     setLoading(false);
                 }
             })
-            }, [coins])
+            }, [])
 
     if (loading) {
             return <div> Loading... </div>
@@ -73,21 +111,24 @@ function CoinPage() {
 
     return (
         <>
-            <Main>
-                <CoinUl>
-                    {coins.map(coin => (
-                        <CoinLi key={coin.id}>
-                            <CoinName>
-                                <div>{coin.name}</div>
-                                <div>{coin.symbol}</div>
-                            </CoinName>
-                            <CoinPrice>
-
-                            </CoinPrice>
-                        </CoinLi>
-                    ))}
-                </CoinUl>
-            </Main>
+            <CoinWrapper>
+                <CoinContainer>
+                    <CoinChart>
+                        <CoinUl>
+                            {coins.map(coin => (
+                                <CoinLi key={coin.id}>
+                                    <CoinName>
+                                        <div>{coin.name}</div>
+                                        <div>{coin.symbol}</div>
+                                    </CoinName>
+                                    <CoinPrice></CoinPrice>
+                                </CoinLi>
+                            ))}
+                        </CoinUl>
+                    </CoinChart>
+                    <CoinDetails></CoinDetails>
+                </CoinContainer>
+            </CoinWrapper>
         </>
     );
 }

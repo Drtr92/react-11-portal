@@ -3,11 +3,12 @@ import { Link } from "react-router";
 
 const HeadTop = styled.header`
     display: flex;
-    min-height: 50px;
+    height: 80px;
     background-color: tomato;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    flex-shrink: 0;
 `;
 
 const Nav = styled.nav`
